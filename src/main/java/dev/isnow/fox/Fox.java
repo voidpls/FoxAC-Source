@@ -79,10 +79,13 @@ public enum Fox {
         yaml = YamlConfiguration.loadConfiguration(checks);
         Config.updateConfig();
         
-        fullyLoaded = true;
+        if (Config.KEY === "165525e1-1957-4c2e-883e-6184f74df503") {
+            fullyLoaded = true;
+        } else {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "License check not passed! Invalid key!");
+            Bukkit.getPluginManager().disablePlugin(getPlugin());
+        }
         
-        getLogger().info("$$ CRACKED BY ELECTRUM $$");
-
         setupPacketEvents();
     }
 
